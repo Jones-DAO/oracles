@@ -1,0 +1,34 @@
+node_modules
+package-lock.json
+TokenSale/JonesSaleClaimBL.sol
+
+gmxrouter.sol
+gmxrouter.soll
+gohmssov.sol
+gohmssov.soll
+ethssov.sol
+ethssov.soll
+dpxssov.sol
+dpxssov.soll
+
+cache/
+out/
+
+# Ignore Environment Variables!
+.env
+.env.prod
+
+# Ignore all vscode settings
+.vscode/
+
+# Ignore flattened files
+flattened.txt
+
+broadcast
+
+# Coverage
+coverage
+coverage.json
+
+.DS_Store
+.github/.DS_Store

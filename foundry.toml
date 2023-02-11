@@ -1,0 +1,38 @@
+# Foundry Configuration File
+# Default definitions: https://github.com/gakonst/foundry/blob/b7917fa8491aedda4dd6db53fbb206ea233cd531/config/src/lib.rs#L782
+# See more config options at: https://github.com/gakonst/foundry/tree/master/config
+
+# The Default Profile
+[profile.default]
+solc_version = '0.8.10'
+auto_detect_solc = false
+optimizer = true
+optimizer_runs = 200
+fuzz_runs = 10
+remappings = [
+  "forge-std=lib/forge-std/src/",
+  "solmate=lib/solmate/src/",
+]
+
+# to run scripts uncomment libraries
+#libraries = [
+#  "src/adapters/Curve2PoolAdapter.sol:Curve2PoolAdapter:0xaE026E73a9F802fc2d26f3A5E394a22A00189505",
+#  "src/adapters/SushiAdapter.sol:SushiAdapter:0xf9D9f8d9141A59b5E6AD3A88f35b5010EDad71A2",
+#  "src/adapters/SsovAdapter.sol:SsovAdapter:0xaa6348BfedFa57Ce6DB54529074905897B3d5D47",
+#  "src/libraries/OneInchZapLib.sol:OneInchZapLib:0x46be03489b730EA8a38E4383FA2AAbC0C9419fA5",
+#  "src/libraries/LPStrategyLib.sol:LPStrategyLib:0xb330A28C8518c4095C8411191120D1739C2d8f60",
+# "src/adapters/GmxAdapter.sol:GmxAdapter:0x405775bE91Aab1D06a3aFBB5A1a6D2A5cf7F5D2a"
+#]
+
+# Extreme Fuzzing CI Profile :P
+[profile.ci]
+# 100_000
+fuzz_runs = 100_000
+
+# RPC Endpoints
+[rpc_endpoints]
+arbitrum = "https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}"
+forking = "https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}"
+
+[etherscan]
+arbitrum = { key = "${ETHERSCAN_KEY}" }
