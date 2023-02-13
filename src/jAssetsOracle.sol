@@ -9,6 +9,15 @@ abstract contract jAssetsOracle is Governable {
     uint128 private min = 30 minutes;
     uint64 private lastUpdatedAt;
     uint64 private amountCollected = 4;
+    address public asset;
+
+    constructor(address _asset) {
+        if (_asset == address(0)) {
+            revert ZeroAddress();
+        }
+
+        asset = _asset;
+    }
 
     // 2 ** 64 -> 18446744073709551616
     struct Price {

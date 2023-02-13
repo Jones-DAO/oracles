@@ -12,7 +12,7 @@ contract jGlpOracle is Governable, jAssetsOracle {
     uint256 private constant BASIS = 1e6;
     uint256 private constant DECIMALS = 1e18;
 
-    constructor() Governable(msg.sender) {}
+    constructor() jAssetsOracle(0x7241bC8035b65865156DDb5EdEf3eB32874a3AF6) Governable(msg.sender) {}
 
     function _supplyPrice() internal view override returns (uint64) {
         uint256 avgAum = (manager.getAum(false) + manager.getAum(true)) / 2; // 30 decimals

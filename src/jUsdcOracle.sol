@@ -11,11 +11,11 @@ contract jUsdcOracle is Governable, jAssetsOracle {
     uint256 private constant BASIS = 1e12;
     uint256 private constant DECIMALS = 1e8;
 
-    constructor() Governable(msg.sender) {}
+    constructor() jAssetsOracle(0xe66998533a1992ecE9eA99cDf47686F4fc8458E0) Governable(msg.sender) {}
 
     function _supplyPrice() internal view override returns (uint64) {
         uint256 ratio = viewer.getUSDCRatio(1e18) * BASIS; // 18 decimals
-        (,int256 usdcPrice,,,) = clOracle.latestRoundData(); // 8 decimals
+        (, int256 usdcPrice,,,) = clOracle.latestRoundData(); // 8 decimals
 
         return uint64((ratio * uint256(usdcPrice)) / DECIMALS); // 18 decimals
     }
