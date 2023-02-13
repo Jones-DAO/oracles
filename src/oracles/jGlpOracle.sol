@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import {Governable} from "src/common/Governable.sol";
-import {jAssetsOracle} from "src/jAssetsOracle.sol";
+import {jAssetsOracle} from "src/oracles/jAssetsOracle.sol";
 import {IGlpManager} from "src/interfaces/IGlpManager.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 

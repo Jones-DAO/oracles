@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import {OwnableUpgradeable} from "@upgradeable/contracts/access/OwnableUpgradeable.sol";
-import {jAssetsOracle} from "src/jAssetsOracle.sol";
+import {jAssetsOracle} from "src/oracles/jAssetsOracle.sol";
 
 contract OracleAggregator is OwnableUpgradeable {
     mapping(address => jAssetsOracle) public oracles;
