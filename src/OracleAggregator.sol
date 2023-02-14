@@ -2,17 +2,17 @@
 pragma solidity ^0.8.10;
 
 import {OwnableUpgradeable} from "@upgradeable/contracts/access/OwnableUpgradeable.sol";
-import {jAssetsOracle} from "src/oracles/jAssetsOracle.sol";
+import {jTokensOracle} from "src/common/jTokensOracle.sol";
 
 contract OracleAggregator is OwnableUpgradeable {
-    mapping(address => jAssetsOracle) public oracles;
+    mapping(address => jTokensOracle) public oracles;
 
     function initialize() external initializer {
         __Ownable_init();
     }
 
     function getUsdPrice(address _asset) external view returns (uint256) {
-        jAssetsOracle oracle = oracles[_asset];
+        jTokensOracle oracle = oracles[_asset];
 
         return uint256(oracle.getLatestPrice());
     }
@@ -22,13 +22,13 @@ contract OracleAggregator is OwnableUpgradeable {
             revert Invalid();
         }
 
-        jAssetsOracle oracle = jAssetsOracle(_oracle);
+        jTokensOracle oracle = jTokensOracle(_oracle);
         oracles[oracle.asset()] = oracle;
 
         emit NewOracle(_oracle, oracle.asset());
     }
 
-    function getOracle(address _asset) external view returns (jAssetsOracle) {
+    function getOracle(address _asset) external view returns (jTokensOracle) {
         return oracles[_asset];
     }
 

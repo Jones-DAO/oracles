@@ -4,22 +4,19 @@ pragma solidity ^0.8.10;
 import {IViewer} from "src/interfaces/IViewer.sol";
 import {Governable} from "src/common/Governable.sol";
 
-abstract contract jAssetsOracle is Governable {
+abstract contract jTokensOracle is Governable {
     IViewer public viewer;
-    uint128 private min = 30 minutes;
+    uint128 private min;
     uint64 private lastUpdatedAt;
-    uint64 private amountCollected = 4;
+    uint64 private amountCollected;
     address public asset;
 
-    constructor(address _asset) {
-        if (_asset == address(0)) {
-            revert ZeroAddress();
-        }
-
+    constructor(address _asset, uint128 _min, uint64 _amountCollected) {
+        min = _min;
+        amountCollected = _amountCollected;
         asset = _asset;
     }
 
-    // 2 ** 64 -> 18446744073709551616
     struct Price {
         uint64 p0;
         uint64 p1;
