@@ -19,10 +19,10 @@ contract jGlpOracle is Governable, jTokensOracle {
 
     function _supplyPrice() internal view override returns (uint64) {
         uint256 avgAum = (manager.getAum(false) + manager.getAum(true)) / 2; // 30 decimals
-        uint256 glpPrice = (avgAum * BASIS) / glp.totalSupply(); // 18 decimals
 
         uint256 jGlpRatio = viewer.getGlpRatioWithoutFees(1e18);
-        uint256 jGlpPriceUsd = (jGlpRatio * glpPrice) / DECIMALS;
+
+        uint256 jGlpPriceUsd = (jGlpRatio * avgAum * BASIS) / (DECIMALS * glp.totalSupply());
 
         return uint64(jGlpPriceUsd); // 18 decimals
     }
