@@ -1,1 +1,24 @@
-# oracles
+![banner](https://pbs.twimg.com/profile_banners/1460314480601022465/1669608449/1500x500)
+# jGLP and jUSDC oracles
+TWAP oracles for JonesDAO advanced strategies vaults.
+# Getting Started
+
+1. <a href="https://book.getfoundry.sh/getting-started/installation">Install</a> Foundry/forge
+2. Clone this repo
+3. `forge install`
+
+# How it works
+
+### Common aspects: 
+
+* In order to get prices, it is necessary to interact with the function `getUsdPrice(address _asset)` in `OracleAggreagator.sol`, passing jUSDC or jGLP <a href="https://docs.jonesdao.io/jones-dao/other/contracts/advanced-strategy-vaults">addresses</a> **WE DO NOT RECOMMEND INTERACTING WITH THE ORACLES DIRECTLY.**
+
+* All prices returns the USD value using 18 decimals.
+
+* Both oracles are an average of 4 prices snapshot, taken with at least 30 minutes space between them. Anyone can call the function to take a price snapshot as long as it has passed 30 minutes or more from the latest one.
+
+### Pricing
+
+* jGLP: Firstly we get the average between buy and sell price from GMXs contracts, then the jGLP-GLP ratio is fetched **(important to point that it does not include any retention)**. Lastly, using these two parameters we are able to get the price in USD for 1 jGLP.
+
+* jUSDC: The jUSDC-USDC ratio is fetched and using chainlink oracles we calculate how much USD 1 jUSDC is worth **not considering any retention**.
