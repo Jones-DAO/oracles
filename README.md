@@ -11,7 +11,7 @@ TWAP oracles for JonesDAO advanced strategies vaults.
 
 ### Common aspects: 
 
-* In order to get prices, it is necessary to interact with the function `getUsdPrice(address _asset)` in `OracleAggreagator.sol`, passing jUSDC or jGLP <a href="https://docs.jonesdao.io/jones-dao/other/contracts/advanced-strategy-vaults">addresses</a> **WE DO NOT RECOMMEND INTERACTING WITH THE ORACLES DIRECTLY.**
+* In order to get prices, it is necessary to interact with the function `getUsdPrice(address _asset)` in `OracleAggreagator.sol`, passing jUSDC or jGLP <a href="https://docs.jonesdao.io/jones-dao/other/contracts">addresses</a> **WE DO NOT RECOMMEND INTERACTING WITH THE ORACLES DIRECTLY.**
 
 * All prices returns the USD value using 18 decimals.
 
