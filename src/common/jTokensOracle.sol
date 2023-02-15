@@ -10,6 +10,7 @@ abstract contract jTokensOracle is Governable {
     uint64 private lastUpdatedAt;
     uint64 private amountCollected;
     address public asset;
+    address internal keeper;
 
     constructor(address _asset, uint128 _min, uint64 _amountCollected) {
         min = _min;
@@ -53,13 +54,29 @@ abstract contract jTokensOracle is Governable {
         price.p3 = _p;
     }
 
-    function setViewer(address _viewer) external onlyGovernor {
-        if (_viewer == address(0)) {
+    function _onlyKeeper() internal view {
+        if (msg.sender != keeper) {
+            revert OnlyKeeper();
+        }
+    }
+
+    function _validate(address _contract) private pure {
+        if (_contract == address(0)) {
             revert ZeroAddress();
         }
+    }
+
+    function setViewer(address _viewer) external onlyGovernor {
+        _validate(_viewer);
         viewer = IViewer(_viewer);
+    }
+
+    function setKeeper(address _keeper) external onlyGovernor {
+        _validate(_keeper);
+        keeper = _keeper;
     }
 
     error ZeroAddress();
     error Delay();
+    error OnlyKeeper();
 }
