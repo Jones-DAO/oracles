@@ -1,5 +1,5 @@
 ![banner](https://pbs.twimg.com/profile_banners/1460314480601022465/1669608449/1500x500)
-# jGLP and jUSDC oracles
+# jGLP and jUSDC oracles example
 TWAP oracles for JonesDAO advanced strategies vaults.
 # Getting Started
 
@@ -43,3 +43,7 @@ First step is to deploy the oracles, then the `OracleAggregator` and finally lin
 * Oracle Aggregator: <a href="https://arbiscan.io/address/0x0a4b5223698CA750f0061E93c1dE8CfDE19c982a">0x0a4b5223698CA750f0061E93c1dE8CfDE19c982a</a>
 * jGLP Oracle: <a href="https://arbiscan.io/address/0x8f51663b3c3df91886c07847d0d7eb64b8141e7e">0x8f51663b3c3df91886c07847d0d7eb64b8141e7e</a>
 * jUSDC Oracle: <a href="https://arbiscan.io/address/0xb8d51f8b5e54a19f840c4e108a7007e510e59c83">0xb8d51f8b5e54a19f840c4e108a7007e510e59c83</a> 
+
+# Notes
+_These oracles are not audited and are only an example of how jGLP and jUSDC should be priced against USD.  
+Make sure the oracles fit your usecase and deploy your own copy if needed._
