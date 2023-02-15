@@ -7,6 +7,11 @@ TWAP oracles for JonesDAO advanced strategies vaults.
 2. Clone this repo
 3. `forge install`
 
+# Disclaimer
+**All code in this repo are just examples of an Oracle example built on top of JonesDAO newest jUSDC and jGLP Vaults** <br>
+
+#### **CODE IS NOT AUDITED!** 
+
 # How it works
 
 ### Common aspects: 
