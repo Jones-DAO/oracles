@@ -41,5 +41,5 @@ First step is to deploy the oracles, then the `OracleAggregator` and finally lin
 # Live Contracts
 
 * Oracle Aggregator: <a href="https://arbiscan.io/address/0x0a4b5223698CA750f0061E93c1dE8CfDE19c982a">0x0a4b5223698CA750f0061E93c1dE8CfDE19c982a</a>
-* jGLP Oracle: <a href="https://arbiscan.io/address/0x70c7e4834a3f7565b7cd8977b33c93d347af9bf6">0x70c7e4834a3f7565b7cd8977b33c93d347af9bf6</a>
-* jUSDC Oracle: <a href="https://arbiscan.io/address/0x263c4fABd13b3822f5d476683bBFe2C437BB4Cc2">0x263c4fABd13b3822f5d476683bBFe2C437BB4Cc2</a> 
+* jGLP Oracle: <a href="https://arbiscan.io/address/0x8f51663b3c3df91886c07847d0d7eb64b8141e7e">0x8f51663b3c3df91886c07847d0d7eb64b8141e7e</a>
+* jUSDC Oracle: <a href="https://arbiscan.io/address/0xb8d51f8b5e54a19f840c4e108a7007e510e59c83">0xb8d51f8b5e54a19f840c4e108a7007e510e59c83</a> 
