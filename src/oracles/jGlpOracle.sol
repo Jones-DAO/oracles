@@ -22,7 +22,7 @@ contract jGlpOracle is Governable, jTokensOracle {
 
         uint256 avgAum = (manager.getAum(false) + manager.getAum(true)) / 2; // 30 decimals
 
-        uint256 jGlpRatio = viewer.getGlpRatioWithoutFees(1e18);
+        uint256 jGlpRatio = viewer.getGlpRatioWithoutRetention(1e18);
 
         uint256 jGlpPriceUsd = (jGlpRatio * avgAum * BASIS) / (DECIMALS * glp.totalSupply());
 
