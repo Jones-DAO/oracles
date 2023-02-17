@@ -28,6 +28,8 @@ abstract contract jTokensOracle is Governable {
     Price private price;
 
     function updatePrice() external {
+        _onlyKeeper();
+
         uint64 timestampNow = uint64(block.timestamp);
 
         if (timestampNow < lastUpdatedAt + min) {

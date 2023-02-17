@@ -7,8 +7,8 @@ import {IGlpManager} from "src/interfaces/IGlpManager.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract jGlpOracle is Governable, jTokensOracle {
-    IGlpManager manager = IGlpManager(0x3963FfC9dff443c2A94f21b129D429891E32ec18);
-    IERC20 glp = IERC20(0x5402B5F40310bDED796c7D0F3FF6683f5C0cFfdf);
+    IGlpManager private constant manager = IGlpManager(0x3963FfC9dff443c2A94f21b129D429891E32ec18);
+    IERC20 private constant glp = IERC20(0x5402B5F40310bDED796c7D0F3FF6683f5C0cFfdf);
     uint256 private constant BASIS = 1e6;
     uint256 private constant DECIMALS = 1e18;
 
@@ -18,14 +18,15 @@ contract jGlpOracle is Governable, jTokensOracle {
     {}
 
     function _supplyPrice() internal view override returns (uint64) {
-        _onlyKeeper();
+        uint256 jGlpRatio = viewer.getGlpRatioWithoutRetention(1e18);
+        uint256 avgAum;
+        uint256 jGlpPriceUsd;
 
-        uint256 avgAum = (manager.getAum(false) + manager.getAum(true)) / 2; // 30 decimals
+        unchecked {
+            avgAum = (manager.getAum(false) + manager.getAum(true)) / 2; // 30 decimals
+            jGlpPriceUsd = (jGlpRatio * avgAum * BASIS) / (DECIMALS * glp.totalSupply()); //18 decimals
+        }
 
-        uint256 jGlpRatio = viewer.getGlpRatioWithoutFees(1e18);
-
-        uint256 jGlpPriceUsd = (jGlpRatio * avgAum * BASIS) / (DECIMALS * glp.totalSupply());
-
-        return uint64(jGlpPriceUsd); // 18 decimals
+        return uint64(jGlpPriceUsd);
     }
 }

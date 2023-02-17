@@ -17,11 +17,15 @@ contract jUsdcOracle is Governable, jTokensOracle {
     {}
 
     function _supplyPrice() internal view override returns (uint64) {
-        _onlyKeeper();
-
         uint256 ratio = viewer.getUSDCRatio(1e18) * BASIS; // 18 decimals
         (, int256 usdcPrice,,,) = clOracle.latestRoundData(); // 8 decimals
 
-        return uint64((ratio * uint256(usdcPrice)) / DECIMALS); // 18 decimals
+        uint64 price;
+
+        unchecked {
+            price = uint64((ratio * uint256(usdcPrice)) / DECIMALS);
+        }
+
+        return price; // 18 decimals
     }
 }
