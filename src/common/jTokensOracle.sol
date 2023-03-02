@@ -31,13 +31,13 @@ abstract contract jTokensOracle is Governable {
         _onlyKeeper();
 
         uint64 timestampNow = uint64(block.timestamp);
-
+        
         if (timestampNow < lastUpdatedAt + min) {
             revert Delay();
         }
 
         _shiftStruct(_supplyPrice());
-
+    
         lastUpdatedAt = timestampNow;
     }
 
